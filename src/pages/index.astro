@@ -1,16 +1,26 @@
 ---
-
+const cats = await Astro.glob('../../public/cats/*.jpg');
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<style>
+			.cat {
+				margin: 10px;
+				border-radius: 10px;
+				border: 1px solid #ccc;
+			}
+		</style>
+		<title>cats</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>cats</h1>
+		<p>no bs. just cats.</p>
+		{cats.map((cat) => (
+			<img src={cat.default.src} alt={cat.default.src} width="200" class="cat"/>
+		))}
 	</body>
 </html>
